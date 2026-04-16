@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Flow 02 - Transaction History</title>
+  <link rel="stylesheet" href="../../design-system/phone-frame.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .screen {
+      display: flex;
+      flex-direction: column;
+      background: #f9fafb;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      color: #1e293b;
+    }
+
+    .screen-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
+    }
+
+    .screen-scroll::-webkit-scrollbar { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body class="presentation-mode">
+<div class="phone-frame">
+  <div class="phone-camera"></div>
+  <div class="screen">
+
+    <div class="screen-scroll">
+
+      <!-- Header -->
+      <div class="bg-slate-900 pt-10 pb-28 px-5 rounded-b-[2rem]">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm text-slate-400 mb-0.5">Laporan terbaru: Hari ini, 09:00 WIB</p>
+            <h1 class="text-2xl font-medium text-white tracking-tight">Transaksi Anda</h1>
+          </div>
+          <button class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center text-slate-300">
+            <i data-lucide="sliders-horizontal" stroke-width="1.5" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="px-5 -mt-20 space-y-4 relative z-10 pb-8">
+
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
+          <div class="flex justify-between items-center mb-3">
+            <div class="flex items-center gap-2">
+              <i data-lucide="wallet" stroke-width="1.5" class="w-4 h-4 text-slate-400"></i>
+              <span class="text-sm font-medium text-slate-500">Penjualan Hari Ini</span>
+            </div>
+            <button class="text-slate-400">
+              <i data-lucide="eye" stroke-width="1.5" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <h2 class="text-4xl font-medium tracking-tight text-slate-900 mb-6">Rp529.000</h2>
+
+          <div class="border-t border-gray-100 pt-5 flex justify-between items-end">
+            <div>
+              <p class="text-sm text-slate-400 font-medium mb-1">Komisi Hari ini</p>
+              <p class="text-base font-medium text-slate-900">Rp 105.000</p>
+            </div>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-50 text-emerald-500">
+              +12.4% <span class="font-normal opacity-80 ml-1">vs kemarin</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Pelanggan Belum Balik -->
+        <div class="bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
+          <!-- Header -->
+          <div class="bg-amber-50 px-5 py-3 flex items-center justify-between border-b border-amber-100">
+            <div class="flex items-center gap-2">
+              <i data-lucide="users" stroke-width="1.5" class="w-4 h-4 text-amber-600"></i>
+              <span class="text-sm font-semibold text-amber-700">PELANGGAN BELUM BALIK</span>
+            </div>
+            <span class="text-xs text-amber-600 font-medium">Minggu ini</span>
+          </div>
+
+          <div class="px-5 pt-4 pb-2">
+            <p class="text-sm text-slate-500 mb-4 leading-relaxed">3 pelanggan tetapmu belum beli minggu ini — biasanya mereka beli rutin.</p>
+
+            <!-- Customer rows -->
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">A</div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-slate-800">Ahmad Fauzi</p>
+                  <p class="text-xs text-slate-400">Terakhir beli 8 hari lalu · Paket Data</p>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">8 hari</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-pink-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">C</div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-slate-800">Citra Dewi</p>
+                  <p class="text-xs text-slate-400">Terakhir beli 6 hari lalu · Pulsa</p>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">6 hari</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">D</div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-slate-800">Dian Pratama</p>
+                  <p class="text-xs text-slate-400">Terakhir beli 5 hari lalu · PLN Token</p>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">5 hari</span>
+              </div>
+            </div>
+
+            <button onclick="openSheet()" class="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white rounded-xl py-3 text-sm font-semibold mb-4">
+              <i data-lucide="send" stroke-width="2" class="w-4 h-4"></i>
+              Kirim Promo ke 3 Pelanggan Ini
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200 mb-8">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-base font-semibold text-slate-700 tracking-tight">Transaksi Terakhir</h3>
+            <a href="#" class="text-sm text-indigo-600 font-medium">Lihat Semua</a>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">14 April 2025</h4>
+            <div class="bg-indigo-50/60 rounded-xl p-3 mb-5 text-sm text-slate-600 font-medium border border-indigo-50">
+              Total Penjualan: Rp 529.000 dari 12 transaksi
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center">
+                    <i data-lucide="wifi" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Paket Data 15GB</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0812-xxxx-3421</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 48.000</p>
+                    <p class="text-xs text-slate-400 mt-0.5">09:14</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center">
+                    <i data-lucide="zap" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">PLN Token 50kWh</p>
+                    <p class="text-xs text-slate-400 mt-0.5">2992-29292-1123</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 55.000</p>
+                    <p class="text-xs text-slate-400 mt-0.5">08:50</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center">
+                    <i data-lucide="phone" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Pulsa Telkomsel 20K</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0821-xxxx-0077</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 21.500</p>
+                    <p class="text-xs text-slate-400 mt-0.5">08:22</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center">
+                    <i data-lucide="wifi" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Paket Data 5GB</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0877-xxxx-5510</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 21.500</p>
+                    <p class="text-xs text-slate-400 mt-0.5">07:58</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center">
+                    <i data-lucide="zap" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">PLN Token 20kWh</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0813-xxxx-1188</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 22.500</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Kemarin</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">13 April 2025</h4>
+            <div class="bg-indigo-50/60 rounded-xl p-3 mb-5 text-sm text-slate-600 font-medium border border-indigo-50">
+              Total Penjualan: Rp 329.000 dari 12 transaksi
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-500 flex items-center justify-center">
+                    <i data-lucide="wifi" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Paket Data 15GB</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0812-xxxx-3421</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 48.000</p>
+                    <p class="text-xs text-slate-400 mt-0.5">09:14</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center">
+                    <i data-lucide="zap" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">PLN Token 50kWh</p>
+                    <p class="text-xs text-slate-400 mt-0.5">2992-29292-1123</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 55.000</p>
+                    <p class="text-xs text-slate-400 mt-0.5">08:50</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center">
+                    <i data-lucide="phone" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Pulsa Telkomsel 20K</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0821-xxxx-0077</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 21.500</p>
+                    <p class="text-xs text-slate-400 mt-0.5">08:22</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center">
+                    <i data-lucide="wifi" stroke-width="1.5" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-800">Paket Data 5GB</p>
+                    <p class="text-xs text-slate-400 mt-0.5">0877-xxxx-5510</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="text-right">
+                    <p class="text-sm font-semibold text-emerald-600">+Rp 21.500</p>
+                    <p class="text-xs text-slate-400 mt-0.5">07:58</p>
+                  </div>
+                  <div class="w-1 h-6 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Sheet -->
+    <div id="sheetOverlay" onclick="handleOverlayClick(event)" style="position:fixed;inset:0;background:rgba(0,0,0,0);z-index:200;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;transition:background 0.3s">
+      <div id="sheet" style="width:390px;max-height:92%;background:white;border-radius:24px 24px 0 0;display:flex;flex-direction:column;transform:translateY(100%);transition:transform 0.38s cubic-bezier(0.22,1,0.36,1);overflow:hidden">
+        <div style="width:36px;height:4px;background:#e5e7eb;border-radius:99px;margin:10px auto 0;flex-shrink:0"></div>
+
+        <!-- Sheet header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;flex-shrink:0">
+          <button onclick="closeSheet()" style="font-size:14px;font-weight:500;color:#4f46e5;cursor:pointer;background:none;border:none;font-family:inherit">Batal</button>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Kirim Promosi</span>
+          <div style="width:42px"></div>
+        </div>
+
+        <!-- AI draft -->
+        <div style="margin:0 14px 10px;flex-shrink:0">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <div style="width:16px;height:16px;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+            </div>
+            <span style="font-size:11px;font-weight:600;color:#7c3aed;letter-spacing:0.03em">DRAFT SAHABAT-AI</span>
+          </div>
+          <div id="aiDraftBox" style="background:#f8f7ff;border:1px solid #e0e7ff;border-radius:12px;padding:10px 12px;font-size:13px;color:#1e293b;line-height:1.55"></div>
+          <!-- Tone chips -->
+          <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+            <button onclick="setTone('urgent')"   style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit">⚡ Lebih Mendesak</button>
+            <button onclick="setTone('discount')" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit">🏷 Tambah Diskon</button>
+            <button onclick="setTone('casual')"   style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit">😊 Lebih Santai</button>
+            <button onclick="setTone('formal')"   style="background:#fafaf9;color:#44403c;border:1px solid #e7e5e4;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit">🤝 Formal</button>
+          </div>
+        </div>
+
+        <!-- Contacts label -->
+        <div style="padding:0 14px 4px;flex-shrink:0">
+          <p style="font-size:11px;font-weight:600;color:#94a3b8;letter-spacing:0.04em">PENERIMA</p>
+        </div>
+
+        <!-- Contact list -->
+        <div id="contactsList" style="flex:1;overflow-y:auto;scrollbar-width:none;padding:0 14px;overscroll-behavior:contain"></div>
+
+        <!-- Send bar -->
+        <div style="padding:12px 14px 28px;flex-shrink:0;border-top:1px solid #e5e7eb;background:white">
+          <button id="btnSend" onclick="sendPromo()" style="width:100%;background:#4f46e5;color:white;border:none;border-radius:99px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">Kirim ke 3 Pelanggan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(80px);background:#1c1c1e;color:white;border-radius:99px;padding:12px 20px;font-size:13px;font-weight:500;white-space:nowrap;z-index:300;display:flex;align-items:center;gap:8px;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);box-shadow:0 8px 24px rgba(0,0,0,0.3)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="toastMsg"></span>
+    </div>
+
+    <div class="flex-shrink-0 bg-white border-t border-gray-200 flex justify-around py-3">
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="home">
+        <i data-lucide="home" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Beranda</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-indigo-600" data-nav="history">
+        <i data-lucide="bar-chart-2" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Laporan</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="misi">
+        <i data-lucide="target" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Misi</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="profile">
+        <i data-lucide="user" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Profil</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="../../design-system/components.js"></script>
+<script>
+  lucide.createIcons();
+  MA.initNav();
+  MA.initPresentationMode();
+
+  // ── Pre-selected contacts (pelanggan belum balik) ──
+  const preSelected = ['Ahmad Fauzi', 'Citra Dewi', 'Dian Pratama'];
+  const allContacts = [
+    { name: 'Ahmad Fauzi',   color: '#4f46e5', sub: '8 hari lalu · Paket Data' },
+    { name: 'Citra Dewi',    color: '#ec4899', sub: '6 hari lalu · Pulsa' },
+    { name: 'Dian Pratama',  color: '#10b981', sub: '5 hari lalu · PLN Token' },
+    { name: 'Budi Hartono',  color: '#0891b2', sub: 'Pelanggan aktif' },
+    { name: 'Eko Santoso',   color: '#d97706', sub: 'Pelanggan aktif' },
+    { name: 'Fajar Nugroho', color: '#7c3aed', sub: 'Pelanggan aktif' },
+  ];
+  let selected = new Set(preSelected);
+
+  // ── AI draft copies ──
+  const drafts = {
+    default:  'Halo! Ada promo spesial dari Indosat hari ini — paket data 120GB cuma Rp 100.000. Cocok banget buat kamu yang aktif online. Mau ambil sekarang?',
+    urgent:   '⚡ Promo terbatas hari ini! Paket data 120GB Rp 100.000 — diskon 40%. Stok habis, penawaran berakhir malam ini!',
+    discount: 'Kabar baik! Diskon 40% untuk paket data 120GB — cuma Rp 100.000. Bayar sekarang, langsung aktif.',
+    casual:   'Eh ada promo bagus nih 😊 Paket data 120GB cuma 100rb! Lumayan banget buat sebulan. Mau ga?',
+    formal:   'Kepada Pelanggan yang terhormat, kami menawarkan Paket Data 120GB seharga Rp 100.000 (diskon 40%). Silakan hubungi kami untuk informasi lebih lanjut.',
+  };
+  let currentTone = 'default';
+
+  function renderDraft() {
+    document.getElementById('aiDraftBox').textContent = drafts[currentTone];
+  }
+
+  function setTone(tone) {
+    currentTone = tone;
+    renderDraft();
+  }
+
+  function renderContacts() {
+    document.getElementById('contactsList').innerHTML = allContacts.map(c => {
+      const isSelected = selected.has(c.name);
+      const isPriority = preSelected.includes(c.name);
+      return `<div onclick="toggleContact('${c.name}')" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;border-bottom:1px solid #f1f5f9">
+        <div style="width:40px;height:40px;border-radius:50%;background:${c.color};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;flex-shrink:0">${c.name[0]}</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500;color:#1e293b">${c.name}</div>
+          <div style="font-size:12px;color:${isPriority ? '#d97706' : '#94a3b8'}">${c.sub}</div>
+        </div>
+        <div id="chk-${c.name.replace(/\s/g,'')}" style="width:22px;height:22px;border-radius:50%;border:2px solid ${isSelected ? '#4f46e5' : '#d1d5db'};background:${isSelected ? '#4f46e5' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s,border-color 0.15s">
+          ${isSelected ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function toggleContact(name) {
+    selected.has(name) ? selected.delete(name) : selected.add(name);
+    renderContacts();
+    updateSendBtn();
+  }
+
+  function updateSendBtn() {
+    const btn = document.getElementById('btnSend');
+    const n = selected.size;
+    btn.textContent = n > 0 ? `Kirim ke ${n} Pelanggan` : 'Pilih Pelanggan';
+    btn.style.background = n > 0 ? '#4f46e5' : '#d1d5db';
+    btn.style.cursor = n > 0 ? 'pointer' : 'not-allowed';
+  }
+
+  function openSheet() {
+    currentTone = 'default';
+    selected = new Set(preSelected);
+    renderDraft();
+    renderContacts();
+    updateSendBtn();
+    const overlay = document.getElementById('sheetOverlay');
+    overlay.style.pointerEvents = 'all';
+    overlay.style.background = 'rgba(0,0,0,0.52)';
+    document.getElementById('sheet').style.transform = 'translateY(0)';
+  }
+
+  function closeSheet() {
+    const overlay = document.getElementById('sheetOverlay');
+    overlay.style.background = 'rgba(0,0,0,0)';
+    overlay.style.pointerEvents = 'none';
+    document.getElementById('sheet').style.transform = 'translateY(100%)';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('sheetOverlay')) closeSheet();
+  }
+
+  function sendPromo() {
+    if (!selected.size) return;
+    closeSheet();
+    setTimeout(() => {
+      document.getElementById('toastMsg').textContent = `Terkirim ke ${selected.size} pelanggan`;
+      const toast = document.getElementById('toast');
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => { toast.style.transform = 'translateX(-50%) translateY(80px)'; }, 3000);
+    }, 400);
+  }
+</script>
+</body>
+</html>

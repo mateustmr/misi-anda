@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Flow 03 — Misi & Program</title>
+  <link rel="stylesheet" href="../../design-system/phone-frame.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .screen {
+      display: flex;
+      flex-direction: column;
+      background: #f1f5f9;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      color: #1e293b;
+    }
+    .screen-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
+    }
+    .screen-scroll::-webkit-scrollbar { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body class="presentation-mode">
+<div class="phone-frame">
+  <div class="phone-camera"></div>
+  <div class="screen">
+
+    <div class="screen-scroll">
+
+      <!-- Header -->
+      <div class="bg-slate-900 pt-10 pb-28 px-5 rounded-b-[2rem]">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <p class="text-sm text-slate-400 mb-0.5">Misi & Program</p>
+            <h1 class="text-2xl font-medium text-white tracking-tight">Budi Santoso</h1>
+          </div>
+          <div class="flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5">
+            <i data-lucide="award" stroke-width="1.5" class="w-4 h-4 text-amber-400"></i>
+            <span class="text-sm font-semibold text-amber-400">Agen Silver</span>
+          </div>
+        </div>
+
+        <!-- Coin progress -->
+        <div class="bg-slate-800 rounded-2xl p-4 border border-slate-700">
+          <div class="flex justify-between items-center mb-2">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="coins" stroke-width="1.5" class="w-4 h-4 text-amber-400"></i>
+              <span class="text-sm font-medium text-slate-300">Total Koin</span>
+            </div>
+            <span class="text-sm font-semibold text-white">64.000 <span class="text-slate-500 font-normal">/ 100.000</span></span>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-1.5 mb-3">
+            <div class="bg-amber-400 h-1.5 rounded-full w-[64%]"></div>
+          </div>
+          <p class="text-xs text-slate-400">36.000 koin lagi untuk unlock <span class="text-white font-medium">cashback Rp 50.000</span></p>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="px-5 -mt-20 space-y-3 relative z-10 pb-8">
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-2xl p-1 flex border border-gray-200 shadow-sm">
+          <button id="tab-harian-btn" onclick="switchTab('harian')"
+            class="flex-1 py-2 text-sm font-medium rounded-xl bg-slate-900 text-white transition-colors">
+            Harian
+          </button>
+          <button id="tab-mingguan-btn" onclick="switchTab('mingguan')"
+            class="flex-1 py-2 text-sm font-medium rounded-xl text-slate-400 transition-colors">
+            Mingguan
+          </button>
+        </div>
+
+        <!-- Tab: Harian -->
+        <div id="tab-harian">
+
+          <!-- Mission 1 — expiring today -->
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-amber-200">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="wifi" stroke-width="1.5" class="w-4 h-4 text-amber-600"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-slate-800">Jual 3 Paket Data</p>
+                  <p class="text-xs text-amber-600 font-medium flex items-center gap-1 mt-0.5">
+                    <i data-lucide="clock" stroke-width="2" class="w-3 h-3"></i>
+                    Berakhir hari ini
+                  </p>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-xs text-slate-400">Reward</p>
+                <p class="text-sm font-semibold text-slate-800">+500 koin</p>
+                <p class="text-xs text-emerald-600 font-medium">~Rp 5.000</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Progress</span>
+                <span class="font-medium text-slate-600">2 / 3</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5">
+                <div class="bg-indigo-600 h-1.5 rounded-full w-[67%]"></div>
+              </div>
+            </div>
+            <button data-link="../../flows/01/index.html"
+              class="w-full bg-indigo-600 text-white rounded-xl py-2.5 text-sm font-semibold cursor-pointer">
+              Selesaikan — 1 lagi
+            </button>
+          </div>
+
+          <!-- Mission 2 — in progress -->
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-3">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="send" stroke-width="1.5" class="w-4 h-4 text-indigo-500"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-slate-800">Kirim 2 Promo ke Pelanggan</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Via fitur Kirim Promosi</p>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-xs text-slate-400">Reward</p>
+                <p class="text-sm font-semibold text-slate-800">+300 koin</p>
+                <p class="text-xs text-emerald-600 font-medium">~Rp 3.000</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Progress</span>
+                <span class="font-medium text-slate-600">1 / 2</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5">
+                <div class="bg-indigo-600 h-1.5 rounded-full w-[50%]"></div>
+              </div>
+            </div>
+            <button data-link="../../flows/01/index.html"
+              class="w-full border border-indigo-200 text-indigo-600 rounded-xl py-2.5 text-sm font-semibold cursor-pointer bg-indigo-50">
+              Kirim Sekarang
+            </button>
+          </div>
+
+          <!-- Mission 3 — completed -->
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-3 opacity-60">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" stroke-width="2.5" class="w-4 h-4 text-emerald-500"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-slate-800 line-through">Login Hari Ini</p>
+                  <p class="text-xs text-emerald-600 font-medium mt-0.5">Selesai · +100 koin</p>
+                </div>
+              </div>
+              <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="check" stroke-width="2.5" class="w-3.5 h-3.5 text-white"></i>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /tab-harian -->
+
+        <!-- Tab: Mingguan -->
+        <div id="tab-mingguan" class="hidden space-y-3">
+
+          <!-- Weekly mission 1 -->
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="trending-up" stroke-width="1.5" class="w-4 h-4 text-blue-500"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-slate-800">Capai Rp 2 juta penjualan</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Reset Senin depan</p>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-xs text-slate-400">Reward</p>
+                <p class="text-sm font-semibold text-slate-800">+2.000 koin</p>
+                <p class="text-xs text-emerald-600 font-medium">~Rp 20.000</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Rp 1.290.000 dari Rp 2.000.000</span>
+                <span class="font-medium text-slate-600">64%</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5">
+                <div class="bg-indigo-600 h-1.5 rounded-full w-[64%]"></div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500">Butuh <span class="font-semibold text-slate-700">Rp 710.000</span> lagi — sekitar 15 transaksi data.</p>
+          </div>
+
+          <!-- Weekly mission 2 -->
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="users" stroke-width="1.5" class="w-4 h-4 text-purple-500"></i>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-slate-800">Jangkau 10 pelanggan baru</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Reset Senin depan</p>
+                </div>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-xs text-slate-400">Reward</p>
+                <p class="text-sm font-semibold text-slate-800">+1.500 koin</p>
+                <p class="text-xs text-emerald-600 font-medium">~Rp 15.000</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Progress</span>
+                <span class="font-medium text-slate-600">4 / 10</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5">
+                <div class="bg-indigo-600 h-1.5 rounded-full w-[40%]"></div>
+              </div>
+            </div>
+            <button data-link="../../flows/02/index.html"
+              class="w-full border border-indigo-200 text-indigo-600 rounded-xl py-2.5 text-sm font-semibold cursor-pointer bg-indigo-50">
+              Lihat Pelanggan
+            </button>
+          </div>
+
+        </div><!-- /tab-mingguan -->
+
+        <!-- Tier progress -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+            <span class="text-sm font-semibold text-slate-700">Tier Kamu</span>
+            <span class="text-xs text-indigo-600 font-medium">Lihat semua tier</span>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between mb-4">
+              <!-- Current -->
+              <div class="flex flex-col items-center gap-1.5">
+                <div class="w-12 h-12 rounded-full bg-slate-200 border-2 border-slate-400 flex items-center justify-center">
+                  <i data-lucide="award" stroke-width="1.5" class="w-5 h-5 text-slate-500"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-700">Silver</span>
+                <span class="text-[10px] text-slate-400">Sekarang</span>
+              </div>
+
+              <!-- Progress line -->
+              <div class="flex-1 mx-3">
+                <div class="flex justify-between text-[10px] text-slate-400 mb-1">
+                  <span>64.000</span>
+                  <span>100.000</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5">
+                  <div class="bg-amber-400 h-1.5 rounded-full w-[64%]"></div>
+                </div>
+              </div>
+
+              <!-- Next -->
+              <div class="flex flex-col items-center gap-1.5">
+                <div class="w-12 h-12 rounded-full bg-amber-50 border-2 border-amber-300 border-dashed flex items-center justify-center">
+                  <i data-lucide="award" stroke-width="1.5" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <span class="text-xs font-semibold text-amber-600">Gold</span>
+                <span class="text-[10px] text-slate-400">Berikutnya</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-3 border border-slate-100">
+              <p class="text-xs text-slate-500 mb-2">Yang kamu dapat di tier Gold:</p>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2 text-xs text-slate-700">
+                  <i data-lucide="check-circle" stroke-width="2" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  Komisi lebih tinggi 5% untuk semua produk
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-700">
+                  <i data-lucide="check-circle" stroke-width="2" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  Akses promo eksklusif sebelum agen lain
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-700">
+                  <i data-lucide="check-circle" stroke-width="2" class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0"></i>
+                  Bonus cashback Rp 100.000/bulan
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard teaser -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="bar-chart-2" stroke-width="1.5" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-slate-800">Posisi #12 bulan ini</p>
+            <p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-0.5">
+              <i data-lucide="trending-up" stroke-width="2" class="w-3 h-3"></i>
+              Naik 3 posisi dari minggu lalu
+            </p>
+          </div>
+          <i data-lucide="chevron-right" stroke-width="1.5" class="w-4 h-4 text-slate-300"></i>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="flex-shrink-0 bg-white border-t border-gray-200 flex justify-around py-3">
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="home">
+        <i data-lucide="home" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Beranda</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="history">
+        <i data-lucide="bar-chart-2" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Laporan</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-indigo-600" data-nav="misi">
+        <i data-lucide="target" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Misi</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-slate-400" data-nav="profile">
+        <i data-lucide="user" stroke-width="1.5" class="w-6 h-6"></i>
+        <span class="text-xs font-medium">Profil</span>
+      </button>
+    </div>
+
+  </div><!-- /screen -->
+</div><!-- /phone-frame -->
+
+<script src="../../design-system/components.js"></script>
+<script>
+  lucide.createIcons();
+  MA.initNav();
+  MA.initPresentationMode();
+
+  function switchTab(id) {
+    const isHarian = id === 'harian';
+    document.getElementById('tab-harian').classList.toggle('hidden', !isHarian);
+    document.getElementById('tab-mingguan').classList.toggle('hidden', isHarian);
+
+    const btnH = document.getElementById('tab-harian-btn');
+    const btnM = document.getElementById('tab-mingguan-btn');
+
+    btnH.classList.toggle('bg-slate-900', isHarian);
+    btnH.classList.toggle('text-white', isHarian);
+    btnH.classList.toggle('text-slate-400', !isHarian);
+
+    btnM.classList.toggle('bg-slate-900', !isHarian);
+    btnM.classList.toggle('text-white', !isHarian);
+    btnM.classList.toggle('text-slate-400', isHarian);
+  }
+</script>
+</body>
+</html>
