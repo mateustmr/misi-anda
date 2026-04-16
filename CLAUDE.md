@@ -136,6 +136,24 @@ If you add overlays like sheets or toast, keep them **inside `.screen`**. `phone
 - Respect `prefers-reduced-motion`.
 - Do not introduce emoji as product icons in the shared system.
 
+## Spacing standards (Tailwind)
+
+These are the agreed tight-spacing conventions. Apply consistently across all flows.
+
+| Element | Class |
+|---------|-------|
+| Card internal padding | `p-4` |
+| Card stack gap | `space-y-3` |
+| Card sub-section divider padding | `pt-3 gap-3` |
+| Dark hero top / bottom | `pt-8 pb-24` |
+| Content overlap into hero | `-mt-20` |
+| Section header text | `text-base font-semibold` |
+| Section header bottom margin | `mb-3` |
+| Product icon tile | `w-12 h-12 rounded-xl` |
+| Promo/recommendation card inner | `p-3` |
+| Promo/recommendation card gap | `mb-3` |
+| Bottom scroll padding | `pb-24` |
+
 ## Flow inventory
 
 | Flow | Screen | Status |
