@@ -230,55 +230,96 @@
           <p class="text-sm text-slate-500 mb-4 leading-relaxed">Penawaran terbaik untuk pelangganmu hari ini.</p>
 
           <!-- Promo Card 1 -->
-          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 mb-4">
-            <div class="p-4 relative min-h-[108px] flex flex-col justify-end" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">
-              <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-white">Diskon 30%</div>
-              <div class="text-white font-bold text-base leading-tight">Paket Ultra 150GB</div>
-              <div class="text-white/80 text-xs mt-1">Data super cepat, cocok buat WFH & streaming.</div>
-            </div>
-            <div class="p-3 flex items-center justify-between">
-              <div>
-                <div class="text-xs text-slate-400 line-through">Rp 100.000</div>
-                <div class="text-base font-bold text-slate-800 tracking-tight">Rp 70.000</div>
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 mb-4 overflow-hidden">
+            <div class="flex gap-3 p-4">
+              <!-- Banner image -->
+              <div class="flex-shrink-0 w-[88px] h-[88px] rounded-xl overflow-hidden relative" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)">
+                <div class="absolute inset-0 flex flex-col justify-between p-1.5">
+                  <div class="flex justify-between items-start">
+                    <span class="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">Promo</span>
+                    <span class="text-[8px] font-bold text-amber-900 leading-tight text-right">im3<br>oredoo</span>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-[9px] font-bold text-amber-900 leading-tight">Diskon 30%</p>
+                    <p class="text-xl font-black text-amber-900 leading-none">150GB</p>
+                    <p class="text-[8px] text-amber-800 leading-tight">mulai Rp70rb</p>
+                  </div>
+                </div>
               </div>
-              <button class="bg-indigo-600 text-white rounded-full px-4 py-2.5 text-xs font-bold flex items-center gap-1.5" onclick="openSheet(0)">
-                <i data-lucide="send" stroke-width="2" class="w-3 h-3"></i> Kirim
+              <!-- Info -->
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800 leading-tight mb-0.5">Paket Ultra 150GB</p>
+                <p class="text-xs text-slate-400 leading-snug mb-2">Data super cepat, cocok untuk WFH dan streaming</p>
+                <p class="text-xs text-slate-400 line-through leading-none">Rp 100.000</p>
+                <p class="text-base font-bold text-slate-800 tracking-tight leading-tight">Rp 70.000</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-4 py-2.5 border-t border-gray-100">
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 rounded-full px-3 py-1">Estimasi komisi +Rp10.000,-/trx</span>
+              <button class="flex items-center gap-1 text-sm font-semibold text-indigo-600" onclick="openSheet(0)">
+                Kirim <i data-lucide="chevron-right" stroke-width="2.5" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
 
           <!-- Promo Card 2 -->
-          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 mb-4">
-            <div class="p-4 relative min-h-[108px] flex flex-col justify-end" style="background:linear-gradient(135deg,#0891b2,#0ea5e9)">
-              <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-white">Diskon 30%</div>
-              <div class="text-white font-bold text-base leading-tight">Paket Nonton 50GB</div>
-              <div class="text-white/80 text-xs mt-1">Streaming & gaming tanpa batas, valid 24 jam penuh.</div>
-            </div>
-            <div class="p-3 flex items-center justify-between">
-              <div>
-                <div class="text-xs text-slate-400 line-through">Rp 85.000</div>
-                <div class="text-base font-bold text-slate-800 tracking-tight">Rp 59.500</div>
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 mb-4 overflow-hidden">
+            <div class="flex gap-3 p-4">
+              <div class="flex-shrink-0 w-[88px] h-[88px] rounded-xl overflow-hidden relative" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">
+                <div class="absolute inset-0 flex flex-col justify-between p-1.5">
+                  <div class="flex justify-between items-start">
+                    <span class="bg-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">Promo</span>
+                    <span class="text-[8px] font-bold text-sky-100 leading-tight text-right">im3<br>oredoo</span>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-[9px] font-bold text-white leading-tight">Diskon 30%</p>
+                    <p class="text-xl font-black text-white leading-none">50GB</p>
+                    <p class="text-[8px] text-sky-100 leading-tight">mulai Rp59rb</p>
+                  </div>
+                </div>
               </div>
-              <button class="bg-indigo-600 text-white rounded-full px-4 py-2.5 text-xs font-bold flex items-center gap-1.5" onclick="openSheet(1)">
-                <i data-lucide="send" stroke-width="2" class="w-3 h-3"></i> Kirim
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800 leading-tight mb-0.5">Paket Nonton 50GB</p>
+                <p class="text-xs text-slate-400 leading-snug mb-2">Streaming & gaming tanpa batas, valid 24 jam</p>
+                <p class="text-xs text-slate-400 line-through leading-none">Rp 85.000</p>
+                <p class="text-base font-bold text-slate-800 tracking-tight leading-tight">Rp 59.500</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-4 py-2.5 border-t border-gray-100">
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 rounded-full px-3 py-1">Estimasi komisi +Rp6.000,-/trx</span>
+              <button class="flex items-center gap-1 text-sm font-semibold text-indigo-600" onclick="openSheet(1)">
+                Kirim <i data-lucide="chevron-right" stroke-width="2.5" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
 
           <!-- Promo Card 3 -->
-          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 mb-4">
-            <div class="p-4 relative min-h-[108px] flex flex-col justify-end" style="background:linear-gradient(135deg,#059669,#0ea5e9)">
-              <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-white">Diskon 25%</div>
-              <div class="text-white font-bold text-base leading-tight">Hemat akhir bulan!</div>
-              <div class="text-white/80 text-xs mt-1">Paket pulsa + data spesial untuk pelanggan setia.</div>
-            </div>
-            <div class="p-3 flex items-center justify-between">
-              <div>
-                <div class="text-xs text-slate-400 line-through">Rp 45.000</div>
-                <div class="text-base font-bold text-slate-800 tracking-tight">Rp 33.750</div>
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 mb-4 overflow-hidden">
+            <div class="flex gap-3 p-4">
+              <div class="flex-shrink-0 w-[88px] h-[88px] rounded-xl overflow-hidden relative" style="background:linear-gradient(135deg,#10b981,#059669)">
+                <div class="absolute inset-0 flex flex-col justify-between p-1.5">
+                  <div class="flex justify-between items-start">
+                    <span class="bg-yellow-400 text-yellow-900 text-[9px] font-bold px-1.5 py-0.5 rounded">Hemat</span>
+                    <span class="text-[8px] font-bold text-emerald-100 leading-tight text-right">im3<br>oredoo</span>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-[9px] font-bold text-white leading-tight">Diskon 25%</p>
+                    <p class="text-lg font-black text-white leading-none">Combo</p>
+                    <p class="text-[8px] text-emerald-100 leading-tight">mulai Rp34rb</p>
+                  </div>
+                </div>
               </div>
-              <button class="bg-indigo-600 text-white rounded-full px-4 py-2.5 text-xs font-bold flex items-center gap-1.5" onclick="openSheet(2)">
-                <i data-lucide="send" stroke-width="2" class="w-3 h-3"></i> Kirim
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold text-slate-800 leading-tight mb-0.5">Hemat Akhir Bulan</p>
+                <p class="text-xs text-slate-400 leading-snug mb-2">Paket pulsa + data spesial untuk pelanggan setia</p>
+                <p class="text-xs text-slate-400 line-through leading-none">Rp 45.000</p>
+                <p class="text-base font-bold text-slate-800 tracking-tight leading-tight">Rp 33.750</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-4 py-2.5 border-t border-gray-100">
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 rounded-full px-3 py-1">Estimasi komisi +Rp4.000,-/trx</span>
+              <button class="flex items-center gap-1 text-sm font-semibold text-indigo-600" onclick="openSheet(2)">
+                Kirim <i data-lucide="chevron-right" stroke-width="2.5" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
